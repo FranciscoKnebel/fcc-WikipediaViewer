@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Wikipedia Viewer</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wikipedia Finder</title>
+
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Kreon|Port+Lligat+Slab|Handlee'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
+	<link rel="stylesheet" href="css/style.css">  
+    
+  </head>
+
+  <body>
+
+    <div ng-app="WikipediaViewer" ng-controller="MainCtrl" class="ng-scope">
+		<div class="container-fluid" style="background-color: white;">
+		  <h1 class="text-center" style="margin-top: 0;">Wikipedia Finder</h1>
+		  <h3 class="text-center"><a href="http://en.wikipedia.org/wiki/Special:Random" target="_blank">Click here for a random article</a></h3>
+
+		  <form ng-submit="search()" class="text-center">
+			<input id="text" type="text" ng-model="searchTxt" placeholder="Search here"/>
+			<br>
+			<input id="English" type="radio" ng-model="lang" value="en" checked/>
+			<label for="English"><span><span></span></span>English</label>
+
+			<input id="Portuguese" type="radio" ng-model="lang" value="pt"/>
+			<label for="Portuguese"><span><span></span></span>Português</label>
+
+			<input id="Spanish" type="radio" ng-model="lang" value="es"/>
+			<label for="Spanish"><span><span></span></span>Español</label>
+		  </form>
+		</div>
+
+		<div style="border-top: 8px solid #216781;">
+		  <div style="min-height: 75vh; padding-bottom: 100px;">
+			<div class="container-fluid">
+			  <ul>
+				<li ng-repeat="result in results" class="bottomHR">
+				  <h1>
+					<a target="_blank" ng-href="{{result.page}}">{{result.title}}</a>
+					<img ng-hide="result.img == 'undefined'" ng-src="{{result.img}}" class="img-thumbnail" height='50' width='50'>
+				  </h1>
+				  <p>{{result.body}}</p>
+				</li>
+			  </ul>
+			</div>
+		  </div>
+
+		  <footer class="navbar navbar-fixed-bottom">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-3">
+						<a href="https://twitter.com/chicoknebel" target="_blank">
+							<span class="fa-stack fa-lg">
+								<i class="fa fa-square-o fa-stack-2x fa-inverse"></i>
+								<i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></a>
+						<a href="https://github.com/KyoZeus" target="_blank">
+							<span class="fa-stack fa-lg">
+							<i class="fa fa-square-o fa-stack-2x fa-inverse"></i>
+							<i class="fa fa-github fa-stack-1x fa-inverse"></i></span></a>
+					</div>
+
+					<div class="col-sm-offset-3 col-sm-3">
+					</div>
+
+					<div class="col-sm-3">
+						<h4 class="link"> Created by <a rel="author" target="_blank" href="http://inf.ufrgs.br/~fpknebel">Francisco Knebel</a></h4>
+					</div>
+				</div>
+			</div>
+		  </footer>
+		</div>
+	</div>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js'></script>
+	<script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-animate.js'></script>
+	<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+    <script src="js/index.js"></script>   
+    
+  </body>
+</html>
